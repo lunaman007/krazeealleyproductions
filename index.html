@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KRAZEE ALLEY PRODUCTIONS | Professional Audio</title>
-        <style>
-        /* 1. THE BRAND COLOR PALETTE */
+    <!-- FIXED FONT AWESOME LINK BELOW -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* 1. THE BRAND COLOR PALLETTE */
         :root {
             --bg-dark: #0b111e;           
             --bg-card: #161b2a;          
@@ -30,8 +32,8 @@
             margin-bottom: 2rem;    
             filter: grayscale(50%); 
             transition: filter 0.3s ease;
-            display: block; /* Ensures it behaves well in the container */
-            margin-left: auto; /* Centers the image */
+            display: block; 
+            margin-left: auto; 
             margin-right: auto;
         }
 
@@ -44,14 +46,14 @@
 
         /* 3. HEADER & NAVIGATION */
         header { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; padding: 0 8%; background-color: rgba(11, 17, 30, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.4rem; text-decoration: none; color: var(--text-main); }
+        .logo { display: flex; align-items: center; text-decoration: none; color: var(--text-main); }
         .logo span { color: var(--accent-blue); }
         nav ul { display: flex; list-style: none; }
         nav ul li { margin-left: 1.5rem; }
         nav ul li a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; transition: color 0.3s ease; }
         nav ul li a:hover { color: var(--accent-blue); }
 
-        /* 4. HERO SECTION */
+        /* 4. HERO SECTION (PARALLAX) */
         .hero { 
             height: 75vh; 
             display: flex; 
@@ -59,56 +61,21 @@
             justify-content: center; 
             align-items: center; 
             text-align: center; 
-            
-            /* This is the magic line: It adds a dark layer so your white text stays visible over the photo */
             background: linear-gradient(rgba(11, 17, 30, 0.7), rgba(11, 17, 30, 0.7)), url('images/studiobackdrop.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-attachment: fixed; /* This creates the parallax effect */
         }
 
-        .hero h1 { 
-            font-size: clamp(2.5rem, 8vw, 5rem); 
-            background: linear-gradient(to bottom, #ffffff, #a5b4fc); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            line-height: 1; 
-        }
+        /* HERO LOGO STYLE */
+        .hero-logo { width: 200px; height: auto; margin-bottom: 1rem; filter: brightness(0) invert(1); }
 
-        .hero p { 
-            font-size: 1.2rem; 
-            color: var(--text-muted); 
-            max-width: 700px; 
-            margin-bottom: 2rem; 
-        }
-
-        .experience-badge { 
-            border: 1px solid var(--accent-blue); 
-            color: var(--accent-blue); 
-            padding: 5px 15px; 
-            border-radius: 20px; 
-            font-size: 0.9rem; 
-            margin-bottom: 1rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-        }
-
-        .cta-button { 
-            padding: 1rem 2.5rem; 
-            background-color: var(--accent-blue); 
-            color: var(--bg-dark); 
-            text-decoration: none; 
-            border-radius: 4px; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            transition: all 0.3s ease; 
-        }
-
-        .cta-button:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 0 25px rgba(0, 188, 255, 0.5); 
-        }
-
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); background: linear-gradient(to bottom, #ffffff, #a5b4fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin-bottom: 2rem; }
+        .experience-badge { border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+        .cta-button { padding: 1rem 2.5rem; background-color: var(--accent-blue); color: var(--bg-dark); text-decoration: none; border-radius: 4px; font-weight: 70-0; text-transform: uppercase; transition: all 0.3s ease; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 0 25px rgba(0, 188, 255, 0.5); }
 
         /* 5. THE BIO/STORY SECTION */
         #about { max-width: 900px; margin: 0 auto; padding: 5rem 5%; }
@@ -128,44 +95,28 @@
         .price-tag { display: block; font-family: 'Impact', sans-serif; color: var(--accent-blue); margin-top: 1.5rem; font-size: 1.4rem; }
         .price-tag span { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: -5px; }
 
-        /* 7. CONTACT & MAP */
+        /* 7. GALLERY SECTION */
+        #gallery { padding: 5rem 10%; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .gallery-item { width: 100%; height: 250px; overflow: hidden; border-radius: 8px; background-color: var(--bg-card); cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.5s ease; filter: grayscale(40%); }
+        .gallery-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
+
+        /* LIGHTBOX STYLE */
+        #lightbox { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; cursor: zoom-out; }
+        #lightbox img { max-width: 90%; max-height: 85vh; border: 3px solid var(--accent-blue); border-radius: 4px; }
+
+        /* 8. CONTACT & MAP */
         .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
         .info-item { margin-bottom: 1.5rem; }
         .info-item strong { display: block; color: var(--accent-blue); text-transform: uppercase; font-size: -0.8rem; letter-spacing: 1px; }
         .info-item p { font-size: 1.1rem; color: var(--text-main); }
         .map-container { width: 100%; height: 350px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
 
-        /* 8. GALLERY SECTION */
-#gallery { padding: 5rem 10%; }
-
-.gallery-grid {
-    display: grid;
-    /* This creates columns that are at least 300px wide, then fills the rest of the space */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.gallery-item {
-    width: 100%;
-    height: 250px; /* Fixed height for a uniform look */
-    overflow: hidden; /* Keeps the image inside the box when we zoom it */
-    border-radius: 8px;
-    background-color: var(--bg-card);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* This is the secret! It crops the image to fit without squishing it */
-    transition: transform 0.5s ease, filter 0.5s ease;
-    filter: grayscale(40%); /* Keeps that moody studio vibe */
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1); /* Subtle zoom effect on hover */
-    filter: grayscale(0%);  /* Brings color back on hover */
-}
-
+        /* SOCIAL LINKS STYLE */
+        .social-links { margin-top: 2rem; display: flex; gap: 1.5rem; }
+        .social-link { color: var(--text-main); text-decoration: none; font-size: 1.8rem; transition: color 0.3s; }
+        .social-link:hover { color: var(--accent-blue); }
 
         @media (max-width: 900px) { .contact-container { grid-template-columns: 1fr; } section { padding: 4rem 5%; } }
     </style>
@@ -173,7 +124,7 @@
 <body id="body">
 
     <header>
-        <a href="#" class="logo">KRAZEE<span class="accent-blue">ALLEY</span>productions</a>
+        <a href="#" class="logo">KRAZEE<span class="accent-blue">ALLEY</span> PRODUCTIONS</a>
         <nav>
             <ul id="nav-list">
                 <li><a href="#about">About</a></li>
@@ -185,21 +136,23 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
+        <!-- LARGE LOGO IN THE CENTER OF HERO -->
+        <img src="images/kap-logo.svg" alt="KRAZEE ALLEY Logo" class="hero-logo">
+
         <div class="experience-badge">35 Years of Studio Expertise</div>
         <h1 data-key="hero_title">KRAZEE ALLEY <br> PRODUCTIONS</h1>
         <p data-key="hero_desc">High-end production, mixing and mastering across all genres.</p>
         <a href="#contact" class="cta-button">Book Your Session</a>
     </section>
 
-    <!-- THE STORY SECTION -->
+    <!-- ABOUT SECTION -->
     <section id="about">
         <div class="section-title">
             <h2 data-key="about_title">The Journey</h2>
         </div>
 
         <div id="bio-content" style="max-width: 800px; margin: 0 auto;">
-            
-            <!-- IMAGE ELEMENT -->
+            <!-- PROFILE IMAGE -->
             <img src="images/lunaman.jpg" alt="My Profile" class="bio-image">
 
             <div class="story-chapter">
@@ -220,7 +173,7 @@
             </div>
 
             <div class="story-chapter">
-                <p>Alongside my work as Tha Lunaman, I continue producing and developing artists, including Leki, always believing that a producer's role is to help an artist discover the strongest version of their own identity. More recently, I've had the privilege of working with Tourist LeMC, collaborating as Co-Producer, Mixing Engineer, and Mastering Engineer.</p>
+                <p>Alongside my work as Tha Lunaman, I continued producing and developing artists, including Leki, always believing that a producer's role is to help an artist discover the strongest version of their own identity. More recently, I've had the privilege of working with Tourist LeMC, collaborating as Co-Producer, Mixing Engineer, and Mastering Engineer.</p>
                 <div class="story-emphasis">
                     "I have never made music to become famous."
                 </div>
@@ -255,44 +208,33 @@
             </div>
         </div>
     </section>
+
     <!-- GALLERY SECTION -->
-<section id="gallery">
-    <div class="section-title">
-        <h2 data-key="gallery_title">Pictures</h2>
-    </div>
-
-    <div class="gallery-grid">
-        <!-- Item 1 -->
-        <div class="gallery-item">
-            <img src="images/studio.jpg" alt="Studio Session">
+    <section id="gallery">
+        <div class="section-title">
+            <h2 data-key="gallery_title">Gallery</h2>
         </div>
-
-        <!-- Item 2 -->
-        <div class="gallery-item">
-            <img src="images/studiobc.png" alt="Album Cover">
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox('images/studio.jpg')">
+                <img src="images/studio.jpg" alt="Studio Session">
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/studiobc.png')">
+                <img src="images/studiobc.png" alt="Album Cover">
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/dikke.png')">
+                <img src="images/dikke.png" alt="Mixing Console">
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/atlanta.jpg')">
+                <img src="images/atlanta.jpg" alt="Live Session">
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/tourist.jpg')">
+                <img src="images/tourist.jpg" alt="Studio Detail">
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/george.jpg')">
+                <img src="images/george.jpg" alt="Client Work">
+            </div>
         </div>
-
-        <!-- Item 3 -->
-        <div class="gallery-item">
-            <img src="images/dikke.png" alt="Mixing Console">
-        </div>
-
-        <!-- Item 4 -->
-        <div class="gallery-item">
-            <img src="images/atlanta.jpg" alt="Live Session">
-        </div>
-
-        <!-- Item 5 -->
-        <div class="gallery-item">
-            <img src="images/tourist.jpg" alt="Studio Detail">
-        </div>
-
-        <!-- Item 6 -->
-        <div class="gallery-item">
-            <img src="images/george.jpg" alt="Client Work">
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- CONTACT SECTION -->
     <section id="contact">
@@ -304,6 +246,13 @@
                 <div class="info-item"><strong data-key="i_email">Email</strong><p>the.lunaman@gmail.com</p></div>
                 <div class="info-item"><strong data-key="i_phone">Phone</strong><p>+32 (4) 485 818 084</p></div>
                 <div class="info-item"><strong data-key="i_addr">Address</strong><p>Turnhoutsebaan 51, <br>2100 Antwerp - Belgium</p></div>
+
+                <!-- SOCIAL LINKS -->
+                <div class="social-links">
+                    <a href="https://www.facebook.com/lunaman1" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/lunaman__" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://tiktok.com/@thalunaman" class="social-link"><i class="fab fa-tiktok"></i></a>
+                </div>
             </div>
 
             <div class="map-container">
@@ -312,9 +261,28 @@
         </div>
     </section>
 
+    <!-- LIGHTBOX OVERLAY -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Large view">
+    </div>
+
     <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1);">
-        &copy; 2023 KRAZEE ALLEY PRODUCTIONS. All Rights Reserved.
+        &copy; 2026 KRAZEE ALLEY PRODUCTIONS. All Rights Reserved.
     </footer>
+
+    <script>
+        // LIGHTBOX LOGIC
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imgSrc;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
